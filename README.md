@@ -17,8 +17,6 @@ CoMeDA/
 ├── LICENSE
 ├── comeda_shinyR/              # R Shiny application (UI and server modules)
 ├── comeda_script/              # Analysis pipeline (numbered stages 0-6) and plotting functions
-├── demodata/
-│   └── comedademo_datasets.zip # Example FASTQ files and metadata template
 ├── renv.lock                   # R dependency lockfile
 └── sessionInfo.txt             # R session information
 ```
@@ -52,7 +50,7 @@ Core functions are defined in `analysis.function.R`, `crossdomain.function.R`, a
 
 ## Demo data
 
-A small example dataset (FASTQ files plus a metadata template) is provided in `demodata/`. The same dataset is available in the Tutorial section of the web server. Metadata must contain a `comparison` (or `comparison.1`) column specifying the primary grouping variable, along with batch identifiers and primer sequences where applicable.
+The example dataset (FASTQ files and the corresponding metadata) can be run directly in the Tutorial section of the web server at https://comeda.tmu.edu.tw. Metadata must contain a `comparison` (or `comparison.1`) column specifying the primary grouping variable, along with batch identifiers and primer sequences where applicable.
 
 ## Third-party components
 
