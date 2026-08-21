@@ -2335,7 +2335,7 @@ hr(), br()
                  strong("Step A: Pull the Docker Image"),
                  p("Download the latest image from DockerHub:"),
                  tags$pre(style = "background-color: #2d3436; color: #f8f9fa; padding: 10px; border-radius: 5px;",
-                          "docker pull tmunathanlee/bccomeda:v2.local.20251215"),
+                          "docker pull tmunathanlee/bccomeda:v2.local.20260817"),
 
                  br(),
 
@@ -2352,7 +2352,7 @@ hr(), br()
 
                  p("Replace ", code("/your/local/path"), " with the actual path where you want to store input/output files:"),
                  tags$pre(style = "background-color: #2d3436; color: #a9f542; padding: 15px; border-radius: 5px; font-weight: bold; overflow-x: auto;",
-                          "docker run -p 3838:3838 -v \"/your/local/path:/nfs/CoMeDA/projects_v2\" tmunathanlee/bccomeda:v2.local.20251215"),
+                          "docker run -p 3838:3838 -v \"/your/local/path:/nfs/CoMeDA/projects_v2\" tmunathanlee/bccomeda:v2.local.20260817"),
 
                  br(),
 
