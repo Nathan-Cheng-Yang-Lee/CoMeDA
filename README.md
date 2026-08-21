@@ -7,7 +7,7 @@
 - **Web server:** https://comeda.tmu.edu.tw (freely available, no login required, accessible for anonymous review)
 - **Docker image:** https://hub.docker.com/r/tmunathanlee/bccomeda (version `v2.local.20260817`)
 - **License:** MIT (see [LICENSE](LICENSE))
-- **Archived release:** Zenodo DOI [`10.5281/zenodo.21991004`](https://doi.org/10.5281/zenodo.21991004)
+- **Archived release:** Zenodo DOI [`10.5281/zenodo.21991003`](https://doi.org/10.5281/zenodo.21991004)
 
 ## Repository structure
 
