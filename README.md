@@ -7,7 +7,7 @@
 - **Web server:** https://comeda.tmu.edu.tw (freely available, no login required, accessible for anonymous review)
 - **Docker image:** https://hub.docker.com/r/tmunathanlee/bccomeda (version `v2.local.20260817`)
 - **License:** MIT (see [LICENSE](LICENSE))
-- **Archived release:** Zenodo DOI `<add after first release>`
+- **Archived release:** Zenodo DOI [`10.5281/zenodo.21991004`](https://doi.org/10.5281/zenodo.21991004)
 
 ## Repository structure
 
@@ -57,7 +57,7 @@ The example dataset (FASTQ files and the corresponding metadata) can be run dire
 CoMeDA builds on the following tools, which retain their original licenses and should be cited alongside CoMeDA.
 
 - **fastCCLasso** — Zhang S, Fang H, Hu T. Bioinformatics 2024;40(5):btae314. DOI: 10.1093/bioinformatics/btae314. Source: https://github.com/ShenZhang-Statistics/fastCCLasso.
-- **PLSDA-batch** (Wang and Le Cao, 2023), **ALDEx2**, **mixOmics**, **vegan**, **PICRUSt2**, **FUNFUN**, **ggpicrust2**, **Kraken2**, **Bracken**, **Cutadapt**, **VSEARCH**, **igraph**, **ggraph**. Full versions are listed in `renv.lock`.
+- **PLSDA-batch** (Wang and Le Cao, 2023), **ALDEx2**, **mixOmics**, **vegan**, **effsize**, **compositions**, **PICRUSt2**, **FUNFUN**, **ggpicrust2**, **Kraken2**, **Bracken**, **Cutadapt**, **VSEARCH**, **igraph**, **ggraph**. Full versions are pinned in `renv.lock`.
 
 ## Contact
 

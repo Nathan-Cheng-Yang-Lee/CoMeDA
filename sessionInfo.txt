@@ -16,7 +16,94 @@ time zone: Asia/Taipei
 tzcode source: system (glibc)
 
 attached base packages:
-[1] stats     graphics  grDevices datasets  utils     methods   base     
+[1] grid      tools     stats     graphics  grDevices utils     datasets 
+[8] methods   base     
+
+other attached packages:
+ [1] RColorBrewer_1.1-3    ggrepel_0.9.6         scales_1.4.0         
+ [4] rlang_1.1.6           reshape2_1.4.5        lubridate_1.9.4      
+ [7] forcats_1.0.1         stringr_1.6.0         dplyr_1.1.4          
+[10] purrr_1.2.0           readr_2.1.6           tidyr_1.3.1          
+[13] tibble_3.3.0          tidyverse_2.0.0       uuid_1.2-1           
+[16] waiter_0.2.5.1        shinythemes_1.2.0     shinyjs_2.1.0        
+[19] shinyBS_0.61.1        shiny_1.12.1          DT_0.34.0            
+[22] circlize_0.4.17       ComplexHeatmap_2.26.0 ggpicrust2_2.5.2     
+[25] compositions_2.0-9    patchwork_1.3.2       ggpubr_0.6.2         
+[28] ggraph_2.2.2          igraph_2.2.1          effsize_0.8.1        
+[31] vegan_2.7-2           permute_0.9-8         ggiraph_0.9.2        
+[34] mixOmics_6.34.0       ggplot2_4.0.1         PLSDAbatch_1.6.0     
+[37] ALDEx2_1.42.0         latticeExtra_0.6-31   lattice_0.22-7       
+[40] zCompositions_1.5.0-5 survival_3.8-3        truncnorm_1.0-9      
+[43] MASS_7.3-65          
 
 loaded via a namespace (and not attached):
-[1] compiler_4.5.2 tools_4.5.2    renv_1.2.4    
+  [1] later_1.4.4                     splines_4.5.2                  
+  [3] ggplotify_0.1.3                 polyclip_1.10-7                
+  [5] lifecycle_1.0.4                 Rdpack_2.6.4                   
+  [7] rstatix_0.7.3                   doParallel_1.0.17              
+  [9] insight_1.4.4                   backports_1.5.0                
+ [11] magrittr_2.0.4                  rmarkdown_2.30                 
+ [13] yaml_2.3.12                     otel_0.2.0                     
+ [15] httpuv_1.6.16                   bayesm_3.1-7                   
+ [17] minqa_1.2.8                     abind_1.4-8                    
+ [19] quadprog_1.5-8                  GenomicRanges_1.62.0           
+ [21] BiocGenerics_0.56.0             yulab.utils_0.2.2              
+ [23] tensorA_0.36.2.1                tweenr_2.0.3                   
+ [25] rappdirs_0.3.3                  gdtools_0.4.4                  
+ [27] IRanges_2.44.0                  S4Vectors_0.48.0               
+ [29] tidytree_0.4.6                  ellipse_0.5.0                  
+ [31] pheatmap_1.0.13                 BiocStyle_2.38.0               
+ [33] performance_0.15.3              RSpectra_0.16-2                
+ [35] codetools_0.2-20                DelayedArray_0.36.0            
+ [37] ggforce_0.5.0                   shape_1.4.6.1                  
+ [39] tidyselect_1.2.1                aplot_0.2.9                    
+ [41] farver_2.1.2                    lme4_1.1-38                    
+ [43] viridis_0.6.5                   matrixStats_1.5.0              
+ [45] stats4_4.5.2                    Seqinfo_1.0.0                  
+ [47] jsonlite_2.0.0                  GetoptLong_1.1.0               
+ [49] tidygraph_1.3.1                 Formula_1.2-5                  
+ [51] iterators_1.0.14                systemfonts_1.3.1              
+ [53] foreach_1.5.2                   treeio_1.34.0                  
+ [55] Rcpp_1.1.0                      glue_1.8.0                     
+ [57] rARPACK_0.11-0                  gridExtra_2.3                  
+ [59] SparseArray_1.10.6              xfun_0.54                      
+ [61] mgcv_1.9-3                      MatrixGenerics_1.22.0          
+ [63] TreeSummarizedExperiment_2.18.0 withr_3.0.2                    
+ [65] numDeriv_2016.8-1.1             BiocManager_1.30.27            
+ [67] fastmap_1.2.0                   ggh4x_0.3.1                    
+ [69] boot_1.3-32                     digest_0.6.39                  
+ [71] timechange_0.3.0                mime_0.13                      
+ [73] R6_2.6.1                        gridGraphics_0.5-1             
+ [75] colorspace_2.1-2                jpeg_0.1-11                    
+ [77] dichromat_2.0-0.1               generics_0.1.4                 
+ [79] fontLiberation_0.1.0            renv_1.2.4                     
+ [81] corpcor_1.6.10                  robustbase_0.99-6              
+ [83] graphlayouts_1.2.2              htmlwidgets_1.6.4              
+ [85] S4Arrays_1.10.1                 pkgconfig_2.0.3                
+ [87] gtable_0.3.6                    S7_0.2.1                       
+ [89] SingleCellExperiment_1.32.0     XVector_0.50.0                 
+ [91] htmltools_0.5.9                 fontBitstreamVera_0.1.1        
+ [93] carData_3.0-5                   zigg_0.0.2                     
+ [95] clue_0.3-66                     Biobase_2.70.0                 
+ [97] png_0.1-8                       reformulas_0.4.2               
+ [99] ggfun_0.2.0                     knitr_1.50                     
+[101] tzdb_0.5.0                      rjson_0.2.23                   
+[103] nlme_3.1-168                    nloptr_2.2.1                   
+[105] GlobalOptions_0.1.3             cachem_1.1.0                   
+[107] parallel_4.5.2                  pillar_1.11.1                  
+[109] vctrs_0.6.5                     promises_1.5.0                 
+[111] car_3.1-3                       xtable_1.8-4                   
+[113] cluster_2.1.8.1                 evaluate_1.0.5                 
+[115] cli_3.6.5                       compiler_4.5.2                 
+[117] crayon_1.5.3                    ggsignif_0.6.4                 
+[119] interp_1.1-6                    plyr_1.8.9                     
+[121] fs_1.6.6                        stringi_1.8.7                  
+[123] viridisLite_0.4.2               deldir_2.0-4                   
+[125] BiocParallel_1.44.0             lmerTest_3.1-3                 
+[127] Biostrings_2.78.0               lazyeval_0.2.2                 
+[129] fontquiver_0.2.1                Matrix_1.7-4                   
+[131] hms_1.1.4                       SummarizedExperiment_1.40.0    
+[133] rbibutils_2.4                   Rfast_2.1.5.2                  
+[135] broom_1.0.11                    memoise_2.0.1                  
+[137] RcppParallel_5.1.11-1           DEoptimR_1.1-4                 
+[139] directlabels_2025.6.24          ape_5.8-1                      
