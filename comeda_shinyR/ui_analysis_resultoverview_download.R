@@ -38,7 +38,7 @@ tagList(
     column(12,
            wellPanel(style = "background-color: #fff; border-left: 5px solid #6c757d;",
                      h4(icon("table"), "3.1 Core Data & Results", style="margin-top:0; color: #6c757d; font-weight:bold;"),
-                     p("Includes: Raw Counts, Normalized Data (CLR), Batch Corrected Data, Metadata, DAM Results, Correlation Tables, and Functional Predictions.", style="color: #666; font-size: 0.9em;"),
+                     p("Includes: Raw Counts, Normalized Data (CLR), Batch Corrected Data, Metadata, DAM Results, Correlation Tables, Functional Predictions, and the job parameter file (parameters_info.txt).", style="color: #666; font-size: 0.9em;"),
                      hr(),
                      fluidRow(
                        column(12, 

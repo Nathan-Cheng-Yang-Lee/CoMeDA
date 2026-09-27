@@ -170,6 +170,13 @@ generate_table_files <- function(save_dir, env, params, job_id, res_folder) {
       file.copy(f, file.path(save_dir, fname))
     }
   }
+  
+  # [2026-09-27] R2-4b: include the job's parameter file (Sections 0-3) in the
+  # Tables ZIP and the One-Click ZIP, which both call this function
+  param_file <- paste0(comedainvpath, "/", job_id, "/analysis/", res_folder, "/parameters_info.txt")
+  if (file.exists(param_file)) {
+    file.copy(param_file, file.path(save_dir, "parameters_info.txt"))
+  }
 }
 
 # ==============================================================================
