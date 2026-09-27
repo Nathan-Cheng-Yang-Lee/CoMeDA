@@ -97,7 +97,7 @@ tagList(
                                h4(icon("cogs"), "Settings", style = "margin-top:0; border-bottom: 2px solid #666; padding-bottom: 5px;"), 
                                tags$label(icon("filter"), " Data Filtering", style="color:#555; margin-top:10px; border-bottom: 1px solid #999; width:100%;"), 
                                selectInput("cn_compevent", "Select Event(s):", choices = NULL, multiple = TRUE), 
-                               radioButtons("cn_ptype", "Edge p-value:", choices = c("Raw" = "raw", "Adjusted (BH)" = "adjusted"), selected = "raw", inline = TRUE),
+                               radioButtons("cn_ptype", "Edge p-value:", choices = c("Raw" = "raw", "Adjusted (BH)" = "adjusted"), selected = "adjusted", inline = TRUE),
                                numericInput("cn_pcut", "P-value Cutoff <", value = 0.05, step = 0.01),
                                numericInput("cn_corrcut", "Correlation Cutoff >", value = 0.3, step = 0.1),
                                tags$label(icon("compress-arrows-alt"), " Nodes", style="color:#555; margin-top:10px; border-bottom: 1px solid #999; width:100%;"), 

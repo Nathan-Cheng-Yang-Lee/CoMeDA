@@ -13,10 +13,11 @@ tagList(
            h3(textOutput("current_job_id_display", inline = TRUE), 
               style = "font-weight: bold; color: forestgreen; margin: 10px 0;"),
            
-           h5("Your data will be retained for 14 days from today.", 
+           h5("Your analysis results will be retained for 14 days from today and cannot be deleted manually before then.", 
               style = "color: firebrick; font-weight: bold; margin: 5px 0;"),
            
-           h5("It is recommended that you use the local version, please click on tutorial for more information.", 
+           # [R2-4c] sensitive-data guidance
+           h5("For sensitive or identifiable data, please use the local Docker version (see Tutorial > Local Installation).", 
               style = "color: firebrick; font-weight: bold; margin: 5px 0;")
     )
   ),

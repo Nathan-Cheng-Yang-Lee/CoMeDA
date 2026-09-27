@@ -202,7 +202,7 @@ tagList(
                             selectInput("ck_plot_event", "Group/Event:", choices = NULL, multiple = TRUE),
                             
                             h5(icon("sliders-h"), " Thresholds", style="border-bottom: 2px solid #999; padding-bottom: 5px; margin-top: 20px; font-weight:bold;"),
-                            radioButtons("ck_plot_ptype", "Edge p-value:", choices = c("Raw" = "raw", "Adjusted (BH)" = "adjusted"), selected = "raw", inline = TRUE),
+                            radioButtons("ck_plot_ptype", "Edge p-value:", choices = c("Raw" = "raw", "Adjusted (BH)" = "adjusted"), selected = "adjusted", inline = TRUE),
                             numericInput("ck_plot_pcut", "P-value <", value = 0.05, step = 0.01),
                             numericInput("ck_plot_corrcut", "Corr >", value = 0.3, step = 0.1),
                             

@@ -5,7 +5,7 @@
 ## Availability
 
 - **Web server:** https://comeda.tmu.edu.tw (freely available, no login required, accessible for anonymous review)
-- **Docker image:** https://hub.docker.com/r/tmunathanlee/bccomeda (version `v2.local.20260817`)
+- **Docker image:** https://hub.docker.com/r/tmunathanlee/bccomeda (version `v2.local.20260927`)
 - **License:** MIT (see [LICENSE](LICENSE))
 - **Archived release:** Zenodo DOI [`10.5281/zenodo.21991003`](https://doi.org/10.5281/zenodo.21991004)
 
@@ -26,8 +26,8 @@ CoMeDA/
 The Docker image bundles the complete application together with all reference databases (Greengenes2, UNITE, and the classification indices), so no additional downloads are required.
 
 ```bash
-docker pull tmunathanlee/bccomeda:v2.local.20260817
-docker run -p 3838:3838 tmunathanlee/bccomeda:v2.local.20260817
+docker pull tmunathanlee/bccomeda:v2.local.20260927
+docker run -p 3838:3838 tmunathanlee/bccomeda:v2.local.20260927
 ```
 
 Then open `http://localhost:3838` in a web browser.

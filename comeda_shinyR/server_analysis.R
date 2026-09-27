@@ -227,7 +227,7 @@ job_id_modal <- function() {
       column(12, textInput("input_other_job_id", "Enter Job ID:", value = "", placeholder = "e.g., a1b2c3d4...", width = "100%")),
       column(12, align = "center", uiOutput("validate_job_id_ui")),
       column(12, br()),
-      column(12, align = "right", style = "color: firebrick; font-weight: bold;", h5("The data will be retained for 14 days.")),
+      column(12, align = "right", style = "color: firebrick; font-weight: bold;", h5("Analysis results are retained for 14 days and cannot be deleted manually before then. For sensitive data, please use the local Docker version.")),  # [R2-4c]
       column(12, align = "right", style = "font-weight: bold; font-size: 16px", actionLink("link_to_tutorial", label = "Link to tutorial", class = "btn-link", style = "color: forestgreen;")),
       column(12, br()),
       column(6, actionButton("confirm_import_job_id", "Switch to this Job", icon = icon("check"), style = "color: whitesmoke; background-color: dimgrey; width: 100%;")),
@@ -322,6 +322,7 @@ get_current_job_mode <- reactive({ if (job_status$demo_mode == 1) "demo" else if
 
 source(paste(comedashinypath, "shinyR", "server_analysis_step1upload.R", sep = "/"), local = TRUE)
 source(paste(comedashinypath, "shinyR", "server_analysis_step2params.R", sep = "/"), local = TRUE)
+source(paste(comedashinypath, "shinyR", "server_software_environment.R", sep = "/"), local = TRUE)  # R2-4b: Section 0 of parameters_info.txt
 source(paste(comedashinypath, "shinyR", "server_analysis_step3execute.R", sep = "/"), local = TRUE)
 source(paste(comedashinypath, "shinyR", "server_analysis_resultoverview.R", sep = "/"), local = TRUE)
 source(paste(comedashinypath, "shinyR", "server_analysis_crosskingdom.R", sep = "/"), local = TRUE)

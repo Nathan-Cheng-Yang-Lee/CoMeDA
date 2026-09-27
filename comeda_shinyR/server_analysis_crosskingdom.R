@@ -733,6 +733,9 @@ generate_parameters_info <- function(mode, params, output_path) {
     paste0("Generated: ", format(Sys.time(), "%Y-%m-%d %H:%M:%S")),
     "================================================================================",
     "",
+    # [R2-4b] Section 0 ("#" lines before [Analysis Mode] are ignored by parse_parameters_info)
+    tryCatch(build_software_environment_lines(),
+             error = function(e) c("# [SECTION 0: SOFTWARE ENVIRONMENT] not available", "")),
     "[Analysis Mode]",
     paste0("Mode: ", params$mode_label),
     ""

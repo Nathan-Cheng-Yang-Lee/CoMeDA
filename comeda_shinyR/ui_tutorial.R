@@ -3,6 +3,11 @@
 ## Structure: NavlistPanel (Left) -> Content (Right)
 ## Updated: 2025-12-07 (Detailed Batch Correction Logic Added)
 
+## [2026-09-27] Temporarily hide the "Comparison with other Webservers" tab
+## (Table 2 of the manuscript now also includes MetaDAVis; this tab has not
+## been updated yet). Set to TRUE to show the tab again.
+show_webserver_comparison <- FALSE
+
 tagList(
   br(),
   fluidRow(
@@ -2141,7 +2146,10 @@ hr(), br()
                   tags$ul(style = "margin-bottom: 0; margin-top: 5px;",
                     tags$li(strong("16S rRNA:"), " default confidence = 0.1"),
                     tags$li(strong("ITS:"), " default confidence = 0.05")
-                  )
+                  ),
+                  # [2026-09-27] describe the runtime fallback
+                  p(style = "margin-top: 5px; margin-bottom: 0;",
+                    "If any sample does not yield Bracken results at the selected confidence, classification of all samples is repeated with confidence = 0, and this adjustment is recorded in the parameter file of the job.")
                  ),
 
                  p(style="font-size: 0.9em; color: #666; margin-top: 10px; border-left: 3px solid #ccc; padding-left: 10px;",
@@ -2289,6 +2297,14 @@ hr(), br()
 
                  p("CoMeDA offers a containerized solution for local deployment via Docker. This ensures reproducibility and eliminates complex dependency management for tools like QIIME2, Kraken2, and PICRUSt2."),
 
+                 # [R2-4c] sensitive-data guidance
+                 div(class = "alert alert-warning", style = "max-width: 900px;",
+                     icon("shield-alt"), strong(" Sensitive data: "),
+                     "On the public web server, uploaded files are kept on a non-public server at Taipei Medical University that only the platform administrator can access. ",
+                     "Raw uploads are removed after the analysis completes, and analysis results are retained for 14 days. ",
+                     "The stored results are not encrypted at rest and cannot be deleted manually before the retention period ends. ",
+                     "For sensitive, identifiable, or unpublished data, we recommend running CoMeDA locally with Docker so that the data remain within your own computational infrastructure."),
+
                  hr(),
 
                  # 1. System Requirements
@@ -2335,7 +2351,7 @@ hr(), br()
                  strong("Step A: Pull the Docker Image"),
                  p("Download the latest image from DockerHub:"),
                  tags$pre(style = "background-color: #2d3436; color: #f8f9fa; padding: 10px; border-radius: 5px;",
-                          "docker pull tmunathanlee/bccomeda:v2.local.20260817"),
+                          "docker pull tmunathanlee/bccomeda:v2.local.20260927"),
 
                  br(),
 
@@ -2352,7 +2368,7 @@ hr(), br()
 
                  p("Replace ", code("/your/local/path"), " with the actual path where you want to store input/output files:"),
                  tags$pre(style = "background-color: #2d3436; color: #a9f542; padding: 15px; border-radius: 5px; font-weight: bold; overflow-x: auto;",
-                          "docker run -p 3838:3838 -v \"/your/local/path:/nfs/CoMeDA/projects_v2\" tmunathanlee/bccomeda:v2.local.20260817"),
+                          "docker run -p 3838:3838 -v \"/your/local/path:/nfs/CoMeDA/projects_v2\" tmunathanlee/bccomeda:v2.local.20260927"),
 
                  br(),
 
@@ -2367,7 +2383,7 @@ hr(), br()
         # 6. Comparison with Other Webservers
         # ======================================================================
 
-        tabPanel(title = tagList(icon("server"), "Comparison with other Webservers"),
+        if (show_webserver_comparison) tabPanel(title = tagList(icon("server"), "Comparison with other Webservers"), value = "webserver_comparison",
 		 h3("Comparison with other Webservers", style = "color: #E95420; font-weight: bold; border-bottom: 1px solid #ddd; padding-bottom: 10px;"),
 
                  p("To highlight the unique positioning of CoMeDA, we compared it with two major platforms: ",

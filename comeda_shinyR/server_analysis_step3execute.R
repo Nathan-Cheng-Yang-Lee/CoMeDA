@@ -430,6 +430,9 @@ save_parameters_info <- function() {
       paste0("# Analysis Date: ", format(Sys.time(), "%Y-%m-%d %H:%M:%S")),
       "# ============================================================",
       "",
+      # [R2-4b] Section 0: software release, tool/database versions, fixed settings
+      tryCatch(build_software_environment_lines(),
+               error = function(e) c("# [SECTION 0: SOFTWARE ENVIRONMENT] not available", "")),
       "# [SECTION 1: SUBMITTED PARAMETERS]",
       "# Parameters submitted by user in Step 2"
     )
@@ -443,7 +446,8 @@ save_parameters_info <- function() {
     # Value is taken from the user-facing input (numericInput "kraken2_confidence").
     # If not set (e.g. taxa-table mode), fall back to the data_type-based default:
     # 16S: 0.1, ITS: 0.05. The two-stage fallback in 0.1_pretaxatablegeneration.sh
-    # may still lower the value at runtime if classification fails.
+    # lowers the value to 0 at runtime if not all samples yield Bracken results
+    # (recorded in Section 2 of parameters_info.txt).
     kraken2_confidence_fallback <- if (!is.null(params$data_type) && params$data_type == "ITS") {
       "0.05"
     } else {

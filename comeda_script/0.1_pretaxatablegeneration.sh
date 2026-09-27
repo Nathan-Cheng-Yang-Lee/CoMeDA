@@ -43,9 +43,11 @@ echo "[$(date '+%Y-%m-%d %H:%M:%S')] Skip Chimera Removal: ${skipchimera}"
 ## ^[NEW] Define Kraken2 confidence parameters (two-stage fallback)
 # Stage 1: Default confidence values
 # Stage 2: Fallback confidence values (if Stage 1 fails)
+# [2026-09-27] 16S Stage 2 changed from 0.05 to 0 (Kraken2 native default), so that
+# samples failing at the default are reclassified without confidence filtering.
 if [ "${metabarctype}" == "16S" ]; then
 	CONFIDENCE_STAGE1=0.1
-	CONFIDENCE_STAGE2=0.05
+	CONFIDENCE_STAGE2=0
 elif [ "${metabarctype}" == "ITS" ]; then
 	CONFIDENCE_STAGE1=0.05
 	CONFIDENCE_STAGE2=0
@@ -770,30 +772,42 @@ else
 	echo "         Failure threshold: >${FAILURE_THRESHOLD_PERCENT}% samples without Kraken2"
 	echo "=========================================="
 	
-	# Clean previous results
-	clean_classification_results
+	# [2026-09-27] Rerun only when Stage 1 used a higher confidence than Stage 2.
+	# If the user already set confidence <= Stage 2 (e.g. 0), rerunning would repeat
+	# the same classification, so the Stage 2 acceptance rule is applied directly.
+	STAGE2_RERUN=$(awk -v a="${CONFIDENCE_STAGE1}" -v b="${CONFIDENCE_STAGE2}" 'BEGIN{print (a+0 > b+0) ? "TRUE" : "FALSE"}')
 	
-	# Generate new command list with lower confidence
-	generate_classification_commands ${CONFIDENCE_STAGE2}
-	
-	# Run classification again
-	set +e
-	parallel -j ${njobs} < ${pretaxapath}/preprocessing/map2ref/map2ref.commandlist
-	parallel_exit=$?
-	set -e
+	if [ "${STAGE2_RERUN}" == "TRUE" ]; then
+		# Clean previous results
+		clean_classification_results
+		
+		# Generate new command list with lower confidence
+		generate_classification_commands ${CONFIDENCE_STAGE2}
+		
+		# Run classification again
+		set +e
+		parallel -j ${njobs} < ${pretaxapath}/preprocessing/map2ref/map2ref.commandlist
+		parallel_exit=$?
+		set -e
+	else
+		echo "[Stage 2] Stage 1 confidence (${CONFIDENCE_STAGE1}) is not above ${CONFIDENCE_STAGE2}; applying Stage 2 acceptance to the existing results without rerunning"
+		CONFIDENCE_STAGE2=${CONFIDENCE_STAGE1}
+	fi
 	
 	# Check results - Stage 2 allows Kraken2 fallback, with 10% failure threshold
 	if check_classification_results "stage2"; then
 		echo "[Stage 2] SUCCESS: Classification completed with confidence=${CONFIDENCE_STAGE2}"
 		FINAL_CONFIDENCE=${CONFIDENCE_STAGE2}
-		CONFIDENCE_ADJUSTED="TRUE"
 		
-		# Record the parameter adjustment
-		record_shell_adjustment \
-			"kraken2_confidence" \
-			"${CONFIDENCE_STAGE2}" \
-			"${CONFIDENCE_STAGE1}" \
-			"Not all samples had Bracken results with default confidence - retrying with lower confidence"
+		# Record the parameter adjustment (only when the confidence was actually lowered)
+		if [ "${STAGE2_RERUN}" == "TRUE" ]; then
+			CONFIDENCE_ADJUSTED="TRUE"
+			record_shell_adjustment \
+				"kraken2_confidence" \
+				"${CONFIDENCE_STAGE2}" \
+				"${CONFIDENCE_STAGE1}" \
+				"Not all samples had Bracken results with default confidence - reclassified with confidence ${CONFIDENCE_STAGE2}"
+		fi
 	else
 		echo "[Stage 2] FAILED: Taxa classification failed - too many samples without valid results"
 		create_error_flag "4" "Taxa Classification" "Taxa classification failed: More than ${FAILURE_THRESHOLD_PERCENT}% of samples could not generate valid classification results even with lowest confidence setting (${CONFIDENCE_STAGE2}). Please check sequence quality and reference database compatibility."

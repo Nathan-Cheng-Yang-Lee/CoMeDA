@@ -119,7 +119,7 @@ tagList(
       ),
       br(),
       p(style = "font-size: 0.85em; color: #999;",
-        icon("shield-alt"), " Data Policy: Raw uploaded files are deleted immediately after analysis. Analysis results are retained for 14 days for download, after which all data is permanently removed.")
+        icon("shield-alt"), " Data Policy: Raw uploaded files are deleted immediately after analysis. Analysis results are retained for 14 days for download, after which all data is permanently removed. Stored results are not encrypted at rest and cannot be deleted manually before the retention period ends, so sensitive or identifiable data should preferably be analyzed with the local Docker version.")
       )
     )	   
   )  	       

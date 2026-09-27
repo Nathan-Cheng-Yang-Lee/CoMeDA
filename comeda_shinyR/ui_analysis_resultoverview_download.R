@@ -178,7 +178,7 @@ tagList(
                                     column(4, numericInput("dl_net_topn", "Top N Taxa:", 50, min=10, max=200, step=10, width="100%"))
                                   ),
                                   fluidRow(
-                                    column(12, radioButtons("dl_net_ptype", "Edge p-value:", choices = c("Raw" = "raw", "Adjusted (BH)" = "adjusted"), selected = "raw", inline = TRUE))
+                                    column(12, radioButtons("dl_net_ptype", "Edge p-value:", choices = c("Raw" = "raw", "Adjusted (BH)" = "adjusted"), selected = "adjusted", inline = TRUE))
                                   ),
                                   helpText("Method: fastCCLasso correlation. Multiple events will be displayed in facets.")
                            ),
